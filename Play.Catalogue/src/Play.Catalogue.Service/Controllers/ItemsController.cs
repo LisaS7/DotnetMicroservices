@@ -42,7 +42,7 @@ namespace Play.Catalogue.Service.Controllers
 
             // CreatedAtAction returns a 201 status and location header to retrieve the created item
             // the location should match a GET request to return the same item
-            return CreatedAtAction(nameof(GetByIdAsync), new { IdentityServiceCollectionExtensions = item.Id }, item);
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = item.Id }, item);
         }
 
         [HttpPut("{id}")]
