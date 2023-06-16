@@ -27,6 +27,7 @@ namespace Play.Inventory.Service.Controllers
             return Ok(items);
         }
 
+        [HttpPost]
         public async Task<ActionResult> PostAsync(GrantItemsDTO grantItemsDTO)
         {
             var inventoryItem = await itemsRepository.GetAsync(
