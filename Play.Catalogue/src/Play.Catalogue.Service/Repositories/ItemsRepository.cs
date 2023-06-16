@@ -3,7 +3,7 @@ using Play.Catalogue.Service.Entities;
 
 namespace Play.Catalogue.Service.Repositories
 {
-    public class ItemsRepository
+    public class ItemsRepository : IItemsRepository
     {
         private const string collectionName = "items";
         private readonly IMongoCollection<Item> dbCollection;
