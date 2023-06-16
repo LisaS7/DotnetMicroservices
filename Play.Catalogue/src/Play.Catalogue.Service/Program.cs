@@ -2,6 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Play.Catalogue.Service.Entities;
 using Play.Catalogue.Service.Repositories;
 using Play.Catalogue.Service.Settings;
 
@@ -22,7 +23,11 @@ builder.Services.AddSingleton(serviceProvider =>
     return mongoClient.GetDatabase(serviceSettings.ServiceName);
 });
 
-builder.Services.AddSingleton<IItemsRepository, ItemsRepository>();
+builder.Services.AddSingleton<IRepository<Item>>(serviceProvider =>
+{
+    var database = serviceProvider.GetService<IMongoDatabase>();
+    return new MongoRepository<Item>(database, "items");
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
