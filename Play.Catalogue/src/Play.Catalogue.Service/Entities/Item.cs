@@ -1,3 +1,5 @@
+using Play.Common;
+
 namespace Play.Catalogue.Service.Entities
 {
 
